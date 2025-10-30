@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            font-size: 28px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        .patient-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .info-row {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            width: 180px;
+            color: #2c3e50;
+        }
+        
+        .info-value {
+            flex: 1;
+            color: #34495e;
+        }
+        
+        .questions-section {
+            margin-top: 30px;
+        }
+        
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+        }
+        
+        .question-number {
+            font-weight: bold;
+            color: #e74c3c;
+            margin-right: 10px;
+        }
+        
+        .question-text {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .answer {
+            color: #27ae60;
+            font-weight: 500;
+            margin-left: 20px;
+        }
+        
+        .header-info {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+        }
+        
+        .report-title {
+            font-size: 24px;
+            margin: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .report-subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+        
+        @media print {
+            body {
+                padding: 20px;
+            }
+            .header-info {
+                background: #667eea !important;
+                -webkit-print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-info">
+        <h1 class="report-title">Patient Report</h1>
+        <p class="report-subtitle">AI Generated Medical Assessment</p>
+    </div>
+
+    <div class="patient-info">
+        <div class="info-row">
+            <span class="info-label">Patient Name:</span>
+            <span class="info-value">Tejas Adhiya</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Age:</span>
+            <span class="info-value">19</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Gender:</span>
+            <span class="info-value">Male</span>
+        </div>
+    </div>
+
+    <div class="questions-section">
+        <div class="question">
+            <div class="question-text">
+                <span class="question-number">1.</span>What symptoms are you experiencing?
+            </div>
+            <div class="answer">Fever, mild headache, body weakness</div>
+        </div>
+
+        <div class="question">
+            <div class="question-text">
+                <span class="question-number">2.</span>When did the symptoms start?
+            </div>
+            <div class="answer">2 days ago</div>
+        </div>
+
+        <div class="question">
+            <div class="question-text">
+                <span class="question-number">3.</span>Do you have cough or cold?
+            </div>
+            <div class="answer">Mild cold</div>
+        </div>
+
+        <div class="question">
+            <div class="question-text">
+                <span class="question-number">4.</span>Have you measured your temperature?
+            </div>
+            <div class="answer">Yes, 100°F</div>
+        </div>
+
+        <div class="question">
+            <div class="question-text">
+                <span class="question-number">5.</span>Do you have difficulty breathing?
+            </div>
+            <div class="answer">No</div>
+        </div>
+
+        <div class="question">
+            <div class="question-text">
+                <span class="question-number">6.</span>Any history of allergies?
+            </div>
+            <div class="answer">No</div>
+        </div>
+
+        <div class="question">
+            <div class="question-text">
+                <span class="question-number">7.</span>Are you taking any current medications?
+            </div>
+            <div class="answer">Paracetamol</div>
+        </div>
+    </div>
+</body>
+</html>

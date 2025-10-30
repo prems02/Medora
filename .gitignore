@@ -1,0 +1,9 @@
+# Ignore environment/config files
+.env
+config.env
+*.env
+
+# Dependencies and system files
+node_modules/
+npm-debug.log
+.DS_Store

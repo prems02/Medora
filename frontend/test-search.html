@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Search Functionality</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .search-form {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .btn {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-outline {
+            background-color: white;
+            color: #007bff;
+            border: 1px solid #007bff;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .results {
+            margin-top: 20px;
+        }
+        .doctor-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: white;
+        }
+        .doctor-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        .clinic-name {
+            color: #666;
+            margin: 5px 0;
+        }
+        .specialization {
+            color: #007bff;
+            font-weight: 500;
+        }
+        .location {
+            color: #666;
+            font-size: 14px;
+        }
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Test Search Functionality</h1>
+        <p>This page tests the clinic search functionality without authentication.</p>
+        
+        <div class="search-form">
+            <h3>Search Filters</h3>
+            <div class="form-group">
+                <label for="doctorNameSearch">Doctor Name</label>
+                <input type="text" id="doctorNameSearch" placeholder="Search by doctor name" value="Doctor">
+            </div>
+            <div class="form-group">
+                <label for="locationSearch">Location</label>
+                <input type="text" id="locationSearch" placeholder="Enter city or area">
+            </div>
+            <div class="form-group">
+                <label for="specializationFilter">Specialization</label>
+                <select id="specializationFilter">
+                    <option value="">All Specializations</option>
+                    <option value="cardiology">Cardiology</option>
+                    <option value="dermatology">Dermatology</option>
+                    <option value="general">General Medicine</option>
+                    <option value="orthopedics">Orthopedics</option>
+                    <option value="pediatrics">Pediatrics</option>
+                    <option value="psychiatry">Psychiatry</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="distanceFilter">Distance</label>
+                <select id="distanceFilter">
+                    <option value="5">Within 5 km</option>
+                    <option value="10">Within 10 km</option>
+                    <option value="20">Within 20 km</option>
+                    <option value="50">Within 50 km</option>
+                </select>
+            </div>
+            <button class="btn btn-primary" onclick="testSearchClinics()">
+                🔍 Search
+            </button>
+            <button class="btn btn-outline" onclick="clearSearch()">
+                ✖️ Clear
+            </button>
+        </div>
+        
+        <div id="results" class="results">
+            <p>Click "Search" to test the search functionality.</p>
+        </div>
+    </div>
+
+    <script>
+        // Test search function
+        async function testSearchClinics() {
+            try {
+                // Get search parameters from form fields
+                const doctorName = document.getElementById('doctorNameSearch')?.value?.trim() || '';
+                const location = document.getElementById('locationSearch')?.value?.trim() || '';
+                const specialization = document.getElementById('specializationFilter')?.value || '';
+                const distance = document.getElementById('distanceFilter')?.value || '';
+
+                // Build query parameters
+                const params = new URLSearchParams();
+                
+                if (doctorName) {
+                    params.append('name', doctorName);
+                }
+                
+                if (location) {
+                    params.append('city', location);
+                }
+                
+                if (specialization) {
+                    params.append('specialization', specialization);
+                }
+                
+                // Add pagination
+                params.append('limit', '100');
+                params.append('page', '1');
+
+                console.log('Searching with parameters:', Object.fromEntries(params));
+
+                // Show loading state
+                const resultsDiv = document.getElementById('results');
+                resultsDiv.innerHTML = '<div class="loading">🔄 Searching clinics...</div>';
+
+                // Make API call
+                const response = await fetch(`/api/doctors/search?${params.toString()}`);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('Search results:', data);
+                    
+                    if (data.success) {
+                        displayResults(data.data.doctors, data.data.pagination);
+                    } else {
+                        console.error('Search failed:', data.message);
+                        resultsDiv.innerHTML = `<div class="error">❌ Search failed: ${data.message}</div>`;
+                    }
+                } else {
+                    console.error('Search request failed:', response.status, response.statusText);
+                    resultsDiv.innerHTML = `<div class="error">❌ Failed to search clinics. Status: ${response.status}</div>`;
+                }
+            } catch (error) {
+                console.error('Error searching clinics:', error);
+                document.getElementById('results').innerHTML = `<div class="error">❌ Error occurred while searching: ${error.message}</div>`;
+            }
+        }
+
+        // Display search results
+        function displayResults(doctors, pagination) {
+            const resultsDiv = document.getElementById('results');
+            
+            if (doctors.length > 0) {
+                let html = `<div class="success">✅ Found ${doctors.length} doctors (Total: ${pagination.totalDoctors})</div>`;
+                
+                doctors.forEach(doctor => {
+                    html += `
+                        <div class="doctor-card">
+                            <div class="doctor-name">Dr. ${doctor.firstName} ${doctor.lastName}</div>
+                            <div class="clinic-name">${doctor.clinicName}</div>
+                            <div class="specialization">${doctor.specialization}</div>
+                            <div class="location">📍 ${doctor.clinicAddress.city}, ${doctor.clinicAddress.state}</div>
+                            <div style="margin-top: 10px;">
+                                <small>Experience: ${doctor.experience} years | Fee: ₹${doctor.consultationFee}</small>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                resultsDiv.innerHTML = html;
+            } else {
+                resultsDiv.innerHTML = '<div class="error">❌ No doctors found matching your search criteria</div>';
+            }
+        }
+
+        // Clear search function
+        function clearSearch() {
+            document.getElementById('doctorNameSearch').value = '';
+            document.getElementById('locationSearch').value = '';
+            document.getElementById('specializationFilter').value = '';
+            document.getElementById('distanceFilter').value = '5';
+            
+            document.getElementById('results').innerHTML = '<p>Search filters cleared. Click "Search" to test again.</p>';
+            console.log('Search form cleared');
+        }
+
+        // Test on page load
+        window.addEventListener('load', function() {
+            console.log('Test search page loaded');
+            console.log('Ready to test search functionality');
+        });
+    </script>
+</body>
+</html>

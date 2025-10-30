@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - CliqPat</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <style>
+        .admin-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .admin-content {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        
+        .doctors-table {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .table-header {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .table-content {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        .doctor-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr auto;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid #dee2e6;
+            align-items: center;
+        }
+        
+        .doctor-row:hover {
+            background: #f8f9fa;
+        }
+        
+        .doctor-info h4 {
+            margin: 0;
+            color: #333;
+        }
+        
+        .doctor-info p {
+            margin: 0.25rem 0 0 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-approved {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-rejected {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .btn-approve {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        
+        .btn-reject {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        
+        .btn-approve:hover {
+            background: #218838;
+        }
+        
+        .btn-reject:hover {
+            background: #c82333;
+        }
+        
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            align-items: center;
+        }
+        
+        .filter-select {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: white;
+        }
+        
+        .refresh-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .refresh-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-header">
+        <h1>🔐 Admin Dashboard</h1>
+        <p>Manage doctor verifications and system overview</p>
+    </div>
+    
+    <div class="admin-content">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalDoctors">-</div>
+                <div class="stat-label">Total Doctors</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="pendingDoctors">-</div>
+                <div class="stat-label">Pending Verification</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="approvedDoctors">-</div>
+                <div class="stat-label">Approved</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="rejectedDoctors">-</div>
+                <div class="stat-label">Rejected</div>
+            </div>
+        </div>
+        
+        <div class="filters">
+            <select class="filter-select" id="statusFilter">
+                <option value="">All Statuses</option>
+                <option value="pending">Pending</option>
+                <option value="approved">Approved</option>
+                <option value="rejected">Rejected</option>
+            </select>
+            <button class="refresh-btn" onclick="loadDoctors()">🔄 Refresh</button>
+        </div>
+        
+        <div class="doctors-table">
+            <div class="table-header">
+                <h3>Doctor Verification Requests</h3>
+            </div>
+            <div class="table-content" id="doctorsTable">
+                <div style="padding: 2rem; text-align: center; color: #666;">
+                    Loading doctors...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentDoctors = [];
+        
+        // Load doctors on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDoctors();
+            loadStats();
+        });
+        
+        // Filter change handler
+        document.getElementById('statusFilter').addEventListener('change', function() {
+            filterDoctors();
+        });
+        
+        async function loadStats() {
+            try {
+                const response = await fetch('/api/doctors/admin/all');
+                const data = await response.json();
+                
+                if (data.success) {
+                    const doctors = data.data.doctors;
+                    const total = doctors.length;
+                    const pending = doctors.filter(d => d.verificationStatus === 'pending').length;
+                    const approved = doctors.filter(d => d.verificationStatus === 'approved').length;
+                    const rejected = doctors.filter(d => d.verificationStatus === 'rejected').length;
+                    
+                    document.getElementById('totalDoctors').textContent = total;
+                    document.getElementById('pendingDoctors').textContent = pending;
+                    document.getElementById('approvedDoctors').textContent = approved;
+                    document.getElementById('rejectedDoctors').textContent = rejected;
+                }
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        }
+        
+        async function loadDoctors() {
+            try {
+                const response = await fetch('/api/doctors/admin/all');
+                const data = await response.json();
+                
+                if (data.success) {
+                    currentDoctors = data.data.doctors;
+                    displayDoctors(currentDoctors);
+                    loadStats();
+                } else {
+                    document.getElementById('doctorsTable').innerHTML = 
+                        '<div style="padding: 2rem; text-align: center; color: #dc3545;">Error loading doctors</div>';
+                }
+            } catch (error) {
+                console.error('Error loading doctors:', error);
+                document.getElementById('doctorsTable').innerHTML = 
+                    '<div style="padding: 2rem; text-align: center; color: #dc3545;">Failed to load doctors</div>';
+            }
+        }
+        
+        function filterDoctors() {
+            const statusFilter = document.getElementById('statusFilter').value;
+            let filteredDoctors = currentDoctors;
+            
+            if (statusFilter) {
+                filteredDoctors = currentDoctors.filter(d => d.verificationStatus === statusFilter);
+            }
+            
+            displayDoctors(filteredDoctors);
+        }
+        
+        function displayDoctors(doctors) {
+            if (doctors.length === 0) {
+                document.getElementById('doctorsTable').innerHTML = 
+                    '<div style="padding: 2rem; text-align: center; color: #666;">No doctors found</div>';
+                return;
+            }
+            
+            const tableHTML = doctors.map(doctor => `
+                <div class="doctor-row">
+                    <div class="doctor-info">
+                        <h4>${doctor.firstName} ${doctor.lastName}</h4>
+                        <p>${doctor.email}</p>
+                        <p>${doctor.specialization} • ${doctor.experience} years</p>
+                    </div>
+                    <div>${doctor.clinicName}</div>
+                    <div>${doctor.clinicAddress.city}, ${doctor.clinicAddress.state}</div>
+                    <div>
+                        <span class="status-badge status-${doctor.verificationStatus}">
+                            ${doctor.verificationStatus.charAt(0).toUpperCase() + doctor.verificationStatus.slice(1)}
+                        </span>
+                    </div>
+                    <div>₹${doctor.consultationFee}</div>
+                    <div class="action-buttons">
+                        ${doctor.verificationStatus === 'pending' ? `
+                            <button class="btn-approve" onclick="verifyDoctor('${doctor._id}', 'approved')">
+                                ✅ Approve
+                            </button>
+                            <button class="btn-reject" onclick="verifyDoctor('${doctor._id}', 'rejected')">
+                                ❌ Reject
+                            </button>
+                        ` : `
+                            <span style="color: #666; font-size: 0.8rem;">
+                                ${doctor.verificationStatus === 'approved' ? 'Already Approved' : 'Already Rejected'}
+                            </span>
+                        `}
+                    </div>
+                </div>
+            `).join('');
+            
+            document.getElementById('doctorsTable').innerHTML = tableHTML;
+        }
+        
+        async function verifyDoctor(doctorId, status) {
+            try {
+                const response = await fetch(`/api/doctors/${doctorId}/verify`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        verificationStatus: status,
+                        verificationNotes: status === 'approved' ? 'Approved by admin' : 'Rejected by admin'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    alert(`Doctor ${status} successfully!`);
+                    loadDoctors(); // Refresh the list
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            } catch (error) {
+                console.error('Error verifying doctor:', error);
+                alert('Error verifying doctor. Please try again.');
+            }
+        }
+    </script>
+</body>
+</html>

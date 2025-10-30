@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard - Cliqpat</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar dashboard-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Cliqpat Logo" class="logo-image">
+                </a>
+            </div>
+            <div class="nav-user">
+                <div class="user-info">
+                    <img src="images/avatar.png" alt="User" class="user-avatar">
+                    <span class="user-name">John Doe</span>
+                </div>
+                <div class="user-menu">
+                    <button class="menu-toggle">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#profile"><i class="fas fa-user"></i> Profile</a></li>
+                        <li><a href="#settings"><i class="fas fa-cog"></i> Settings</a></li>
+                        <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Layout -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active">
+                        <a href="#overview">
+                            <i class="fas fa-home"></i>
+                            <span>Overview</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#clinics">
+                            <i class="fas fa-search-location"></i>
+                            <span>Find Clinics</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#appointments">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Appointments</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#health-records">
+                            <i class="fas fa-file-medical"></i>
+                            <span>I-EHR</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#reports">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Reports</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#profile">
+                            <i class="fas fa-user"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Overview Section -->
+            <section id="overview" class="dashboard-section active">
+                <div class="section-header">
+                    <h1>Welcome back, John!</h1>
+                    <p>Here's what's happening with your health today</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>2</h3>
+                            <p>Upcoming Appointments</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-file-medical"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>15</h3>
+                            <p>I-EHR</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Good</h3>
+                            <p>Health Status</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h2>Quick Actions</h2>
+                    <div class="actions-grid">
+                        <button class="action-card" onclick="showSection('clinics')">
+                            <i class="fas fa-search-location"></i>
+                            <h3>Find Clinic</h3>
+                            <p>Search for nearby clinics</p>
+                        </button>
+
+                        <button class="action-card" onclick="showSection('health-records')">
+                            <i class="fas fa-upload"></i>
+                            <h3>Upload Records</h3>
+                            <p>Add medical documents</p>
+                        </button>
+                        <button class="action-card" onclick="showSection('appointments')">
+                            <i class="fas fa-calendar-plus"></i>
+                            <h3>Book Appointment</h3>
+                            <p>Schedule consultation</p>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="recent-activity">
+                    <h2>Recent Activity</h2>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h4>Appointment Booked</h4>
+                                <p>Dr. Smith - Cardiology • Tomorrow 10:00 AM</p>
+                                <span class="activity-time">2 hours ago</span>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-file-upload"></i>
+                            </div>
+                            <div class="activity-content">
+                                <h4>Medical Record Uploaded</h4>
+                                <p>Blood test report added to I-EHR</p>
+                                <span class="activity-time">3 days ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Find Clinics Section -->
+            <section id="clinics" class="dashboard-section">
+                <div class="section-header">
+                    <h1>Find Clinics</h1>
+                    <p>Discover and book appointments at nearby clinics</p>
+                </div>
+
+                <!-- Search Filters -->
+                <div class="search-filters">
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label>Doctor Name</label>
+                            <input type="text" placeholder="Search by doctor name" id="doctorNameSearch">
+                        </div>
+                        <div class="filter-group">
+                            <label>Location</label>
+                            <input type="text" placeholder="Enter city or area" id="locationSearch">
+                        </div>
+                        <div class="filter-group">
+                            <label>Specialization</label>
+                            <select id="specializationFilter">
+                                <option value="">All Specializations</option>
+                                <option value="cardiology">Cardiology</option>
+                                <option value="dermatology">Dermatology</option>
+                                <option value="general">General Medicine</option>
+                                <option value="orthopedics">Orthopedics</option>
+                                <option value="pediatrics">Pediatrics</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Distance</label>
+                            <select id="distanceFilter">
+                                <option value="5">Within 5 km</option>
+                                <option value="10">Within 10 km</option>
+                                <option value="20">Within 20 km</option>
+                                <option value="50">Within 50 km</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" onclick="searchClinics()">
+                            <i class="fas fa-search"></i>
+                            Search
+                        </button>
+                        <button class="btn btn-outline" onclick="clearSearch()">
+                            <i class="fas fa-times"></i>
+                            Clear
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Clinics List -->
+                <div class="clinics-grid" id="clinicsGrid">
+                    <!-- Sample Doctor Cards with Weekly Slots -->
+                    <div class="clinic-card">
+                        <div class="clinic-header">
+                            <div class="clinic-info">
+                                <img src="images/doctor1.jpg" alt="Dr. Sarah Smith" class="doctor-avatar">
+                                <div>
+                                    <h3>Dr. Sarah Smith</h3>
+                                    <p>Cardiology • Apollo Hospital</p>
+                                    <div class="clinic-meta">
+                                        <span class="experience"><i class="fas fa-user-md"></i> 15 years exp</span>
+                                        <span class="rating"><i class="fas fa-star"></i> 4.8 (120 reviews)</span>
+                                        <span class="distance"><i class="fas fa-map-marker-alt"></i> 2.5 km</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="consultation-fee">
+                                <span class="fee">₹500</span>
+                                <span class="label">Consultation</span>
+                            </div>
+                        </div>
+                        
+                        <div class="clinic-actions">
+                            <button class="btn btn-outline" onclick="showWeeklySlots('doctor1')">
+                                <i class="fas fa-calendar-week"></i>
+                                View Weekly Slots
+                            </button>
+                    <button class="btn btn-success" onclick="callDoctor('${appointment._id}')">
+                        <i class="fas fa-phone"></i>
+                        Call Doctor
+                    </button>
+                            <button class="btn btn-primary" onclick="quickBookAppointment('doctor1')">
+                                <i class="fas fa-calendar-plus"></i>
+                                Book Now
+                            </button>
+                        </div>
+                        
+                        <!-- Weekly Slots View (Initially Hidden) -->
+                        <div class="weekly-slots" id="doctor1-slots" style="display: none;">
+                            <div class="slots-header">
+                                <h4>Available This Week</h4>
+                                <button class="close-slots" onclick="hideWeeklySlots('doctor1')">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <div class="week-navigation">
+                                <button class="week-nav-btn" onclick="previousWeek('doctor1')">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <span class="week-range" id="doctor1-week-range">Dec 16 - 22, 2024</span>
+                                <button class="week-nav-btn" onclick="nextWeek('doctor1')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                            <div class="daily-slots">
+                                <div class="day-column">
+                                    <div class="day-header">
+                                        <span class="day-name">Mon</span>
+                                        <span class="day-date">16</span>
+                                    </div>
+                                    <div class="time-slots">
+                                        <button class="time-slot available" onclick="bookSlot('doctor1', '2024-12-16', '09:00')">
+                                            09:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor1', '2024-12-16', '10:00')">
+                                            10:00
+                                        </button>
+                                        <button class="time-slot booked" disabled>
+                                            11:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor1', '2024-12-16', '15:00')">
+                                            15:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor1', '2024-12-16', '16:00')">
+                                            16:00
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="day-column">
+                                    <div class="day-header">
+                                        <span class="day-name">Tue</span>
+                                        <span class="day-date">17</span>
+                                    </div>
+                                    <div class="time-slots">
+                                        <button class="time-slot available" onclick="bookSlot('doctor1', '2024-12-17', '09:00')">
+                                            09:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor1', '2024-12-17', '10:00')">
+                                            10:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor1', '2024-12-17', '11:00')">
+                                            11:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor1', '2024-12-17', '15:00')">
+                                            15:00
+                                        </button>
+                                        <button class="time-slot booked" disabled>
+                                            16:00
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="day-column">
+                                    <div class="day-header">
+                                        <span class="day-name">Wed</span>
+                                        <span class="day-date">18</span>
+                                    </div>
+                                    <div class="time-slots">
+                                        <button class="time-slot available" onclick="bookSlot('doctor1', '2024-12-18', '09:00')">
+                                            09:00
+                                        </button>
+                                        <button class="time-slot booked" disabled>
+                                            10:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor1', '2024-12-18', '11:00')">
+                                            11:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor1', '2024-12-18', '15:00')">
+                                            15:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor1', '2024-12-18', '16:00')">
+                                            16:00
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="day-column">
+                                    <div class="day-header">
+                                        <span class="day-name">Thu</span>
+                                        <span class="day-date">19</span>
+                                    </div>
+                                    <div class="time-slots">
+                                        <button class="time-slot available" onclick="bookSlot('doctor1', '2024-12-19', '09:00')">
+                                            09:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor1', '2024-12-19', '10:00')">
+                                            10:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor1', '2024-12-19', '11:00')">
+                                            11:00
+                                        </button>
+                                        <button class="time-slot booked" disabled>
+                                            15:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor1', '2024-12-19', '16:00')">
+                                            16:00
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="day-column">
+                                    <div class="day-header">
+                                        <span class="day-name">Fri</span>
+                                        <span class="day-date">20</span>
+                                    </div>
+                                    <div class="time-slots">
+                                        <button class="time-slot available" onclick="bookSlot('doctor1', '2024-12-20', '09:00')">
+                                            09:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor1', '2024-12-20', '10:00')">
+                                            10:00
+                                        </button>
+                                        <button class="time-slot booked" disabled>
+                                            11:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor1', '2024-12-20', '15:00')">
+                                            15:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor1', '2024-12-20', '16:00')">
+                                            16:00
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="day-column closed">
+                                    <div class="day-header">
+                                        <span class="day-name">Sat</span>
+                                        <span class="day-date">21</span>
+                                    </div>
+                                    <div class="closed-notice">
+                                        <span>Closed</span>
+                                    </div>
+                                </div>
+                                <div class="day-column closed">
+                                    <div class="day-header">
+                                        <span class="day-name">Sun</span>
+                                        <span class="day-date">22</span>
+                                    </div>
+                                    <div class="closed-notice">
+                                        <span>Closed</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slots-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color available"></span>
+                                    <span>Available (1 hour slots)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color booked"></span>
+                                    <span>Booked</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color break"></span>
+                                    <span>Break Time (1-2 PM)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Second Doctor Card -->
+                    <div class="clinic-card">
+                        <div class="clinic-header">
+                            <div class="clinic-info">
+                                <img src="images/doctor2.jpg" alt="Dr. Michael Johnson" class="doctor-avatar">
+                                <div>
+                                    <h3>Dr. Michael Johnson</h3>
+                                    <p>General Medicine • City Clinic</p>
+                                    <div class="clinic-meta">
+                                        <span class="experience"><i class="fas fa-user-md"></i> 12 years exp</span>
+                                        <span class="rating"><i class="fas fa-star"></i> 4.6 (89 reviews)</span>
+                                        <span class="distance"><i class="fas fa-map-marker-alt"></i> 1.8 km</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="consultation-fee">
+                                <span class="fee">₹300</span>
+                                <span class="label">Consultation</span>
+                            </div>
+                        </div>
+                        
+                        <div class="clinic-actions">
+                            <button class="btn btn-outline" onclick="showWeeklySlots('doctor2')">
+                                <i class="fas fa-calendar-week"></i>
+                                View Weekly Slots
+                            </button>
+                            <button class="btn btn-success" onclick="initiateAICall('doctor2')">
+                                <i class="fas fa-phone"></i>
+                                AI Call
+                            </button>
+                            <button class="btn btn-primary" onclick="quickBookAppointment('doctor2')">
+                                <i class="fas fa-calendar-plus"></i>
+                                Book Now
+                            </button>
+                        </div>
+                        
+                        <!-- Weekly Slots View (Initially Hidden) -->
+                        <div class="weekly-slots" id="doctor2-slots" style="display: none;">
+                            <div class="slots-header">
+                                <h4>Available This Week</h4>
+                                <button class="close-slots" onclick="hideWeeklySlots('doctor2')">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <div class="week-navigation">
+                                <button class="week-nav-btn" onclick="previousWeek('doctor2')">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <span class="week-range" id="doctor2-week-range">Dec 16 - 22, 2024</span>
+                                <button class="week-nav-btn" onclick="nextWeek('doctor2')">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                            <div class="daily-slots">
+                                <!-- Similar structure but with different availability -->
+                                <div class="day-column">
+                                    <div class="day-header">
+                                        <span class="day-name">Mon</span>
+                                        <span class="day-date">16</span>
+                                    </div>
+                                    <div class="time-slots">
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-16', '09:00')">
+                                            09:00
+                                        </button>
+                                        <button class="time-slot booked" disabled>
+                                            10:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-16', '11:00')">
+                                            11:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-16', '15:00')">
+                                            15:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-16', '16:00')">
+                                            16:00
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- Additional days similar to doctor1 -->
+                                <div class="day-column">
+                                    <div class="day-header">
+                                        <span class="day-name">Tue</span>
+                                        <span class="day-date">17</span>
+                                    </div>
+                                    <div class="time-slots">
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-17', '09:00')">
+                                            09:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-17', '10:00')">
+                                            10:00
+                                        </button>
+                                        <button class="time-slot booked" disabled>
+                                            11:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-17', '15:00')">
+                                            15:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-17', '16:00')">
+                                            16:00
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- Continue with remaining days -->
+                                <div class="day-column">
+                                    <div class="day-header">
+                                        <span class="day-name">Wed</span>
+                                        <span class="day-date">18</span>
+                                    </div>
+                                    <div class="time-slots">
+                                        <button class="time-slot booked" disabled>
+                                            09:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-18', '10:00')">
+                                            10:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-18', '11:00')">
+                                            11:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-18', '15:00')">
+                                            15:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-18', '16:00')">
+                                            16:00
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="day-column">
+                                    <div class="day-header">
+                                        <span class="day-name">Thu</span>
+                                        <span class="day-date">19</span>
+                                    </div>
+                                    <div class="time-slots">
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-19', '09:00')">
+                                            09:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-19', '10:00')">
+                                            10:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-19', '11:00')">
+                                            11:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-19', '15:00')">
+                                            15:00
+                                        </button>
+                                        <button class="time-slot booked" disabled>
+                                            16:00
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="day-column">
+                                    <div class="day-header">
+                                        <span class="day-name">Fri</span>
+                                        <span class="day-date">20</span>
+                                    </div>
+                                    <div class="time-slots">
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-20', '09:00')">
+                                            09:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-20', '10:00')">
+                                            10:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-20', '11:00')">
+                                            11:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-20', '15:00')">
+                                            15:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-20', '16:00')">
+                                            16:00
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="day-column">
+                                    <div class="day-header">
+                                        <span class="day-name">Sat</span>
+                                        <span class="day-date">21</span>
+                                    </div>
+                                    <div class="time-slots">
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-21', '09:00')">
+                                            09:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-21', '10:00')">
+                                            10:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-21', '11:00')">
+                                            11:00
+                                        </button>
+                                        <button class="time-slot available" onclick="bookSlot('doctor2', '2024-12-21', '12:00')">
+                                            12:00
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="day-column closed">
+                                    <div class="day-header">
+                                        <span class="day-name">Sun</span>
+                                        <span class="day-date">22</span>
+                                    </div>
+                                    <div class="closed-notice">
+                                        <span>Closed</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slots-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color available"></span>
+                                    <span>Available (1 hour slots)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color booked"></span>
+                                    <span>Booked</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color break"></span>
+                                    <span>Break Time (1-2 PM)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Appointments Section -->
+            <section id="appointments" class="dashboard-section">
+                <div class="section-header">
+                    <h1>Appointments</h1>
+                    <p>Manage your upcoming and past appointments</p>
+                </div>
+
+                <!-- Appointment Tabs -->
+                <div class="appointment-tabs">
+                    <button class="tab-btn active" onclick="showAppointmentTab('upcoming')">Upcoming</button>
+                    <button class="tab-btn" onclick="showAppointmentTab('past')">Past</button>
+                </div>
+
+                <!-- Upcoming Appointments -->
+                <div id="upcomingAppointments" class="appointment-list">
+                    <div class="appointment-card">
+                        <div class="appointment-header">
+                            <div class="doctor-info">
+                                <img src="images/doctor1.jpg" alt="Dr. Smith" class="doctor-avatar">
+                                <div>
+                                    <h3>Dr. Sarah Smith</h3>
+                                    <p>Cardiology • Apollo Hospital</p>
+                                </div>
+                            </div>
+                            <div class="appointment-status confirmed">
+                                <i class="fas fa-check-circle"></i>
+                                Confirmed
+                            </div>
+                        </div>
+                        <div class="appointment-details">
+                            <div class="detail-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>Tomorrow, 10:00 AM</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>123 Medical Center, Mumbai</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>₹500 Consultation Fee</span>
+                            </div>
+                        </div>
+                        <div class="appointment-actions">
+                            <button class="btn btn-outline" onclick="rescheduleAppointment(1)">
+                                <i class="fas fa-calendar-alt"></i>
+                                Reschedule
+                            </button>
+                            <button class="btn btn-outline" onclick="cancelAppointment(1)">
+                                <i class="fas fa-times"></i>
+                                Cancel
+                            </button>
+                            <button class="btn btn-primary" onclick="viewAppointmentDetails(1)">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Past Appointments -->
+                <div id="pastAppointments" class="appointment-list" style="display: none;">
+                    <div class="appointment-card past">
+                        <div class="appointment-header">
+                            <div class="doctor-info">
+                                <img src="images/doctor2.jpg" alt="Dr. Johnson" class="doctor-avatar">
+                                <div>
+                                    <h3>Dr. Michael Johnson</h3>
+                                    <p>General Medicine • City Clinic</p>
+                                </div>
+                            </div>
+                            <div class="appointment-status completed">
+                                <i class="fas fa-check-circle"></i>
+                                Completed
+                            </div>
+                        </div>
+                        <div class="appointment-details">
+                            <div class="detail-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>Last Week, 2:30 PM</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>456 Health Plaza, Mumbai</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-rupee-sign"></i>
+                                <span>₹300 Consultation Fee</span>
+                            </div>
+                        </div>
+                        <div class="appointment-actions">
+                            <button class="btn btn-outline" onclick="viewPrescription(1)">
+                                <i class="fas fa-prescription"></i>
+                                View Prescription
+                            </button>
+                            <button class="btn btn-primary" onclick="bookFollowUp(1)">
+                                <i class="fas fa-calendar-plus"></i>
+                                Book Follow-up
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- I-EHR Section -->
+            <section id="health-records" class="dashboard-section">
+                <div class="section-header">
+                    <h1>I-EHR (Electronic Health Records)</h1>
+                    <p>Manage your medical documents and health history</p>
+                </div>
+
+                <!-- Upload Section -->
+                <div class="upload-section">
+                    <div class="upload-area" id="healthRecordUpload">
+                        <div class="upload-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <h3>Upload EHR Documents</h3>
+                        <p>Upload your medical records, lab reports, and other health documents</p>
+                        <p class="upload-hint">Supported: PDF files only (Max 10MB per file)</p>
+                        
+                        <!-- EHR Upload Form -->
+                        <form id="ehrUploadForm" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="ehrTitle">Document Title</label>
+                                <input type="text" id="ehrTitle" name="title" placeholder="e.g., Blood Test Report, X-Ray Results" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ehrDescription">Description (Optional)</label>
+                                <textarea id="ehrDescription" name="description" placeholder="Brief description of the document"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="ehrAppointment">Link to Appointment (Optional)</label>
+                                <select id="ehrAppointment" name="appointmentId">
+                                    <option value="">Select Appointment</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ehrDocument">Select PDF File</label>
+                                <input type="file" id="ehrDocument" name="ehrDocument" accept=".pdf" style="display: none;" required>
+                                <button type="button" class="btn btn-secondary" onclick="document.getElementById('ehrDocument').click()">
+                                    <i class="fas fa-file-pdf"></i>
+                                    Choose PDF File
+                                </button>
+                                <span id="selectedFileName" class="selected-file-name"></span>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-upload"></i>
+                                Upload Document
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Records Categories -->
+                <div class="records-categories">
+                    <div class="category-tabs">
+                        <button class="category-tab active" onclick="showCategory('all')">All Records</button>
+                        <button class="category-tab" onclick="showCategory('ehr_document')">EHR Documents</button>
+                        <button class="category-tab" onclick="showCategory('lab_report')">Lab Reports</button>
+                        <button class="category-tab" onclick="showCategory('prescription')">Prescriptions</button>
+                        <button class="category-tab" onclick="showCategory('imaging')">Imaging</button>
+                        <button class="category-tab" onclick="showCategory('vaccination')">Vaccinations</button>
+                    </div>
+                </div>
+
+                <!-- Records Grid -->
+                <div class="records-grid" id="recordsGrid">
+                    <!-- Record cards will be populated here -->
+                </div>
+
+                <!-- EHR Documents List -->
+                <div class="ehr-documents-section">
+                    <h3>Uploaded EHR Documents</h3>
+                    <div id="ehrDocumentsList" class="ehr-documents-grid">
+                        <!-- EHR documents will be loaded here dynamically -->
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Reports Section -->
+            <section id="reports" class="dashboard-section">
+                <div class="section-header">
+                    <h1>Health Reports</h1>
+                    <p>View and analyze your health data and uploaded documents</p>
+                </div>
+
+                <!-- EHR Documents in Reports -->
+                <div class="reports-section">
+                    <h3>Electronic Health Records</h3>
+                    <div id="ehrReportsList" class="reports-grid">
+                        <!-- EHR documents will be loaded here dynamically -->
+                    </div>
+                </div>
+
+                <!-- Health Metrics Overview -->
+                <div class="reports-overview">
+                    <h3>Health Metrics</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <h4>Blood Pressure</h4>
+                                <span class="metric-status normal">Normal</span>
+                            </div>
+                            <div class="metric-value">120/80 mmHg</div>
+                            <div class="metric-trend">↗️ +2 from last week</div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <h4>Blood Sugar</h4>
+                                <span class="metric-status normal">Normal</span>
+                            </div>
+                            <div class="metric-value">95 mg/dL</div>
+                            <div class="metric-trend">↘️ -3 from last week</div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <h4>Weight</h4>
+                                <span class="metric-status normal">Stable</span>
+                            </div>
+                            <div class="metric-value">70 kg</div>
+                            <div class="metric-trend">→ No change</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section id="profile" class="dashboard-section">
+                <div class="section-header">
+                    <h1>Profile</h1>
+                    <p>Manage your personal information and preferences</p>
+                </div>
+
+                <!-- Profile Form -->
+                <div class="profile-form">
+                    <div class="form-section">
+                        <h3>Personal Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" value="John">
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" value="Doe">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" value="john.doe@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel" value="+91 98765 43210">
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Medical Information</h3>
+                        <div class="form-group">
+                            <label>Blood Group</label>
+                            <select>
+                                <option value="A+">A+</option>
+                                <option value="B+">B+</option>
+                                <option value="O+">O+</option>
+                                <option value="AB+">AB+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Allergies</label>
+                            <textarea rows="3" placeholder="List any allergies...">Penicillin, Dust</textarea>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary">
+                        <i class="fas fa-save"></i>
+                        Save Changes
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal" id="appointmentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Appointment Details</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Appointment details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Call Modal -->
+    <div class="modal" id="aiCallModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>AI Health Call</h3>
+                <button class="modal-close" onclick="closeAICallModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="ai-call-interface">
+                    <!-- Doctor Info -->
+                    <div class="call-doctor-info">
+                        <img src="" alt="Doctor" class="call-doctor-avatar" id="callDoctorAvatar">
+                        <div class="call-doctor-details">
+                            <h3 id="callDoctorName">Dr. Sarah Smith</h3>
+                            <p id="callDoctorSpecialty">Cardiology • Apollo Hospital</p>
+                            <span class="call-status" id="callStatus">Initiating AI Call...</span>
+                        </div>
+                    </div>
+
+                    <!-- Call Setup Form -->
+                    <div class="call-setup" id="callSetupForm">
+                        <h4>Quick Health Assessment</h4>
+                        <p>Before connecting with the AI assistant, please provide some basic information:</p>
+                        
+                        <div class="form-group">
+                            <label>Primary Symptoms or Concerns</label>
+                            <textarea id="callSymptoms" rows="3" placeholder="Describe your symptoms or health concerns..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Urgency Level</label>
+                            <select id="callUrgency">
+                                <option value="normal">Normal - General consultation</option>
+                                <option value="moderate">Moderate - Concerning symptoms</option>
+                                <option value="high">High - Urgent medical attention needed</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Duration of Symptoms</label>
+                            <select id="callDuration">
+                                <option value="new">Just started (less than 24 hours)</option>
+                                <option value="recent">Recent (1-7 days)</option>
+                                <option value="ongoing">Ongoing (more than a week)</option>
+                                <option value="chronic">Chronic (ongoing condition)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="call-setup-actions">
+                            <button class="btn btn-outline" onclick="closeAICallModal()">Cancel</button>
+                            <button class="btn btn-success" onclick="startAICall()">
+                                <i class="fas fa-phone"></i>
+                                Start AI Call
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Call Interface (Hidden initially) -->
+                    <div class="call-interface" id="activeCallInterface" style="display: none;">
+                        <div class="call-status-display">
+                            <div class="call-animation">
+                                <div class="call-pulse"></div>
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h4 id="callStatusText">AI Assistant is analyzing your symptoms...</h4>
+                            <p id="callStatusSubtext">Please wait while our AI processes your information</p>
+                        </div>
+                        
+                        <div class="call-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="callProgress"></div>
+                            </div>
+                            <span class="progress-text" id="callProgressText">0% Complete</span>
+                        </div>
+                        
+                        <div class="call-actions">
+                            <button class="btn btn-outline" onclick="endAICall()">
+                                <i class="fas fa-phone-slash"></i>
+                                End Call
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Call Results (Hidden initially) -->
+                    <div class="call-results" id="callResults" style="display: none;">
+                        <div class="results-header">
+                            <i class="fas fa-check-circle success"></i>
+                            <h4>AI Assessment Complete</h4>
+                        </div>
+                        
+                        <div class="results-content">
+                            <div class="result-section">
+                                <h5>Preliminary Assessment</h5>
+                                <div class="assessment-summary" id="assessmentSummary">
+                                    <!-- AI assessment results will be populated here -->
+                                </div>
+                            </div>
+                            
+                            <div class="result-section">
+                                <h5>Recommendations</h5>
+                                <ul class="recommendations" id="aiRecommendations">
+                                    <!-- AI recommendations will be populated here -->
+                                </ul>
+                            </div>
+                            
+                            <div class="result-section">
+                                <h5>Next Steps</h5>
+                                <div class="next-steps" id="nextSteps">
+                                    <!-- Next steps will be populated here -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="results-actions">
+                            <button class="btn btn-outline" onclick="saveAIReport()">
+                                <i class="fas fa-download"></i>
+                                Save Report
+                            </button>
+                            <button class="btn btn-secondary" onclick="shareAIReport()">
+                                <i class="fas fa-share"></i>
+                                Share with Doctor
+                            </button>
+                            <button class="btn btn-primary" onclick="bookAppointmentFromAI()">
+                                <i class="fas fa-calendar-plus"></i>
+                                Book Appointment
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Appointment Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Book Appointment</h3>
+                <button class="modal-close" onclick="closeBookingModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="booking-form">
+                    <div class="selected-slot-info" id="selectedSlotInfo">
+                        <!-- Selected slot information will be displayed here -->
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Reason for Appointment</label>
+                        <textarea id="appointmentReason" rows="3" placeholder="Describe your health concern or reason for visit..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Appointment Type</label>
+                        <select id="appointmentType">
+                            <option value="consultation">General Consultation</option>
+                            <option value="follow_up">Follow-up Visit</option>
+                            <option value="routine_checkup">Routine Checkup</option>
+                            <option value="emergency">Emergency Consultation</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Additional Notes (Optional)</label>
+                        <textarea id="appointmentNotes" rows="2" placeholder="Any additional information for the doctor..."></textarea>
+                    </div>
+                    
+                    <div class="booking-summary">
+                        <div class="summary-item">
+                            <span class="label">Consultation Fee:</span>
+                            <span class="value" id="consultationFee">₹500</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Registration Fee:</span>
+                            <span class="value" id="registrationFee">₹200</span>
+                        </div>
+                        <div class="summary-item total">
+                            <span class="label">Total Amount:</span>
+                            <span class="value" id="totalAmount">₹700</span>
+                        </div>
+                    </div>
+                    
+                    <div class="booking-actions">
+                        <button class="btn btn-outline" onclick="closeBookingModal()">Cancel</button>
+                        <button class="btn btn-primary" onclick="confirmBooking()">
+                            <i class="fas fa-check"></i>
+                            Confirm Booking
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ElevenLabs Widget Script - Load FIRST -->
+    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+    
+    <!-- Alternative ElevenLabs CDN -->
+    <script>
+        // Load ElevenLabs widget with multiple fallbacks
+        if (typeof window.customElements === 'undefined') {
+            console.warn('⚠️ Custom elements not supported, loading polyfill...');
+            const script = document.createElement('script');
+            script.src = 'https://unpkg.com/@webcomponents/webcomponentsjs@2.4.3/webcomponents-loader.js';
+            document.head.appendChild(script);
+        }
+        
+        // Test ElevenLabs widget availability
+        function testElevenLabsWidget() {
+            try {
+                const testWidget = document.createElement('elevenlabs-convai');
+                testWidget.setAttribute('agent-id', 'agent_3901k3fja0qfef3t3b2x8t2nbcte');
+                console.log('✅ ElevenLabs widget element can be created');
+                return true;
+            } catch (error) {
+                console.warn('⚠️ ElevenLabs widget creation failed:', error);
+                return false;
+            }
+        }
+        
+        // Wait for DOM and test widget
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const isWorking = testElevenLabsWidget();
+                console.log('🧪 ElevenLabs widget test result:', isWorking ? '✅ Working' : '❌ Failed');
+            }, 1000);
+        });
+        
+        window.elevenLabsWidgetAvailable = false;
+        setTimeout(() => {
+            window.elevenLabsWidgetAvailable = testElevenLabsWidget();
+        }, 2000);
+    </script>
+
+    <!-- Scripts -->
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard - Cliqpat</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar dashboard-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Cliqpat Logo" class="logo-image">
+                </a>
+            </div>
+            <div class="nav-user">
+                <div class="user-info">
+                    <img src="images/doctor-avatar.png" alt="Doctor" class="user-avatar">
+                    <span class="user-name">Dr. Sarah Smith</span>
+                </div>
+                <div class="user-menu">
+                    <button class="menu-toggle">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#profile"><i class="fas fa-user"></i> Profile</a></li>
+                        <li><a href="#clinic-settings"><i class="fas fa-cog"></i> Clinic Settings</a></li>
+                        <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Layout -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active">
+                        <a href="#overview">
+                            <i class="fas fa-home"></i>
+                            <span>Overview</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#patients">
+                            <i class="fas fa-users"></i>
+                            <span>Patients</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#appointments">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Appointments</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#ehr">
+                            <i class="fas fa-file-medical"></i>
+                            <span>EHR System</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#schedule">
+                            <i class="fas fa-calendar-week"></i>
+                            <span>Weekly Schedule</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#analytics">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Analytics</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#profile">
+                            <i class="fas fa-user-md"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Overview Section -->
+            <section id="overview" class="dashboard-section active">
+                <div class="section-header">
+                    <h1>Welcome back, Dr. Sarah!</h1>
+                    <p>Here's your clinic overview for today</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>12</h3>
+                            <p>Today's Appointments</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>45</h3>
+                            <p>Total Patients</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>12</h3>
+                            <p>Completed Today</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-rupee-sign"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>₹6,500</h3>
+                            <p>Today's Revenue</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h2>Quick Actions</h2>
+                    <div class="actions-grid">
+                        <button class="action-card" onclick="showSection('appointments')">
+                            <i class="fas fa-calendar-plus"></i>
+                            <h3>View Appointments</h3>
+                            <p>Check today's schedule & AI reports</p>
+                        </button>
+                        <button class="action-card" onclick="showSection('ehr')">
+                            <i class="fas fa-file-medical"></i>
+                            <h3>EHR System</h3>
+                            <p>Access patient records</p>
+                        </button>
+                        <button class="action-card" onclick="showSection('patients')">
+                            <i class="fas fa-user-plus"></i>
+                            <h3>Add Patient</h3>
+                            <p>Register new patient</p>
+                        </button>
+                        <button class="action-card" onclick="showSection('ehr')">
+                            <i class="fas fa-file-medical"></i>
+                            <h3>Health Records</h3>
+                            <p>Access patient EHR</p>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Today's Schedule -->
+                <div class="today-schedule">
+                    <h2>Today's Schedule</h2>
+                    <div class="schedule-list">
+                        <div class="schedule-item">
+                            <div class="time-slot">
+                                <span class="time">09:00</span>
+                                <span class="duration">30 min</span>
+                            </div>
+                            <div class="patient-info">
+                                <h4>Mr. John Doe</h4>
+                                <p>Follow-up consultation</p>
+                                <span class="ai-report-status generated" id="ai-status-1">AI Report Generated</span>
+                            </div>
+                            <div class="schedule-actions">
+                                <button class="btn btn-outline small" onclick="viewPatient(1)">
+                                    <i class="fas fa-user"></i>
+                                    View
+                                </button>
+                                <button class="btn btn-primary small" onclick="startConsultation(1)">
+                                    <i class="fas fa-play"></i>
+                                    Start
+                                </button>
+                            </div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="time-slot">
+                                <span class="time">09:30</span>
+                                <span class="duration">45 min</span>
+                            </div>
+                            <div class="patient-info">
+                                <h4>Mrs. Jane Smith</h4>
+                                <p>New patient consultation</p>
+                                <span class="ai-report-status pending" id="ai-status-2">AI Report Yet to Come</span>
+                            </div>
+                            <div class="schedule-actions">
+                                <button class="btn btn-outline small" onclick="viewPatient(2)">
+                                    <i class="fas fa-user"></i>
+                                    View
+                                </button>
+                                <button class="btn btn-success small" onclick="viewAIReport(2)" id="ai-btn-2">
+                                    <i class="fas fa-robot"></i>
+                                    AI Report
+                                </button>
+                                <button class="btn btn-primary small" onclick="startConsultation(2)">
+                                    <i class="fas fa-play"></i>
+                                    Start
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Patients Section -->
+            <section id="patients" class="dashboard-section">
+                <div class="section-header">
+                    <h1>Patient Management</h1>
+                    <p>Manage your patient database and records</p>
+                </div>
+
+                <!-- Patient Search -->
+                <div class="search-section">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search patients by name, phone, or ID..." id="patientSearch">
+                        <button class="btn btn-primary" onclick="searchPatients()">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <button class="btn btn-secondary" onclick="addNewPatient()">
+                        <i class="fas fa-user-plus"></i>
+                        Add New Patient
+                    </button>
+                </div>
+
+                <!-- Patient Filters -->
+                <div class="patient-filters">
+                    <button class="filter-btn active" onclick="filterPatients('all')">All Patients</button>
+                    <button class="filter-btn" onclick="filterPatients('active')">Active</button>
+                    <button class="filter-btn" onclick="filterPatients('recent')">Recent</button>
+                    <button class="filter-btn" onclick="filterPatients('priority')">Priority</button>
+                </div>
+
+                <!-- Patients List -->
+                <div class="patients-list" id="patientsList">
+                    <div class="patient-card">
+                        <div class="patient-avatar">
+                            <img src="images/patient1.jpg" alt="Patient">
+                        </div>
+                        <div class="patient-details">
+                            <h3>Mr. John Doe</h3>
+                            <p>ID: P001 • Age: 35 • Phone: +91 98765 43210</p>
+                            <div class="patient-tags">
+                                <span class="tag active">Active</span>
+                                <span class="tag ai-report">AI Report Ready</span>
+                            </div>
+                        </div>
+                        <div class="patient-actions">
+                            <button class="btn btn-outline" onclick="viewPatientProfile(1)">
+                                <i class="fas fa-user"></i>
+                                Profile
+                            </button>
+                            <button class="btn btn-outline" onclick="viewEHR(1)">
+                                <i class="fas fa-file-medical"></i>
+                                EHR
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Appointments Section -->
+            <section id="appointments" class="dashboard-section">
+                <div class="section-header">
+                    <h1>Appointment Management</h1>
+                    <p>Manage your clinic schedule and appointments</p>
+                </div>
+
+                <!-- Calendar View -->
+                <div class="calendar-section">
+                    <div class="calendar-header">
+                        <button class="btn btn-outline" onclick="previousMonth()">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <h2 id="currentMonth">December 2024</h2>
+                        <button class="btn btn-outline" onclick="nextMonth()">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div class="calendar-grid" id="calendarGrid">
+                        <!-- Calendar will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Appointments List -->
+                <div class="appointments-section">
+                    <div class="section-header-row">
+                        <h2>All Appointments</h2>
+                        <button class="btn btn-outline" onclick="refreshDoctorAppointments()">
+                            <i class="fas fa-sync-alt"></i>
+                            Refresh
+                        </button>
+                    </div>
+                    <div class="appointments-list">
+                        <p class="no-data">Loading appointments...</p>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!-- EHR System Section -->
+            <section id="ehr" class="dashboard-section">
+                <div class="section-header">
+                    <h1>Electronic Health Records</h1>
+                    <p>Access and manage patient health records</p>
+                </div>
+
+                <!-- EHR Search -->
+                <div class="ehr-search">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search patient records..." id="ehrSearch">
+                        <button class="btn btn-primary" onclick="searchEHR()">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Patient Records -->
+                <div class="ehr-records" id="ehrRecords">
+                    <!-- Patient records will be populated here -->
+                </div>
+
+                <!-- EHR Documents for Appointments -->
+                <div class="ehr-appointments">
+                    <h2>Appointments with EHR Documents</h2>
+                    <div class="appointments-list" id="ehrAppointmentsList">
+                        <!-- Appointments with EHR documents will be populated here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Weekly Schedule Section -->
+            <section id="schedule" class="dashboard-section">
+                <div class="section-header">
+                    <h1>Weekly Schedule Management</h1>
+                    <p>Configure your weekly clinic timings and availability</p>
+                </div>
+
+                <!-- Schedule Overview -->
+                <div class="schedule-overview">
+                    <div class="overview-card">
+                        <h3>Current Week</h3>
+                        <p id="currentWeekRange">Dec 16 - Dec 22, 2024</p>
+                    </div>
+                    <div class="overview-card">
+                        <h3>Total Available Slots</h3>
+                        <p id="totalSlots">35 slots</p>
+                    </div>
+                    <div class="overview-card">
+                        <h3>Booked Appointments</h3>
+                        <p id="bookedSlots">18 slots</p>
+                    </div>
+                    <div class="overview-card">
+                        <h3>Available Slots</h3>
+                        <p id="availableSlots">17 slots</p>
+                    </div>
+                </div>
+
+                <!-- Schedule Configuration -->
+                <div class="schedule-config">
+                    <div class="config-header">
+                        <h2>Configure Weekly Schedule</h2>
+                        <div class="config-actions">
+                            <button class="btn btn-outline" onclick="resetSchedule()">Reset to Default</button>
+                            <button class="btn btn-primary" onclick="saveSchedule()">
+                                <i class="fas fa-save"></i>
+                                Save Schedule
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Weekly Schedule Form -->
+                    <div class="weekly-schedule" id="weeklyScheduleForm">
+                        <!-- Monday -->
+                        <div class="day-schedule">
+                            <div class="day-header">
+                                <h3>Monday</h3>
+                                <div class="day-toggle">
+                                    <label class="switch">
+                                        <input type="checkbox" id="monday-open" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span>Open</span>
+                                </div>
+                            </div>
+                            <div class="day-config">
+                                <div class="time-inputs">
+                                    <div class="form-group">
+                                        <label>Start Time</label>
+                                        <input type="time" id="monday-start" value="09:00">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>End Time</label>
+                                        <input type="time" id="monday-end" value="18:00">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Slot Duration (mins)</label>
+                                        <select id="monday-duration">
+                                            <option value="30">30 minutes</option>
+                                            <option value="60" selected>60 minutes</option>
+                                            <option value="90">90 minutes</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="break-time">
+                                    <h4>Break Time</h4>
+                                    <div class="break-inputs">
+                                        <div class="form-group">
+                                            <label>Break Start</label>
+                                            <input type="time" id="monday-break-start" value="13:00">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Break End</label>
+                                            <input type="time" id="monday-break-end" value="14:00">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tuesday -->
+                        <div class="day-schedule">
+                            <div class="day-header">
+                                <h3>Tuesday</h3>
+                                <div class="day-toggle">
+                                    <label class="switch">
+                                        <input type="checkbox" id="tuesday-open" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span>Open</span>
+                                </div>
+                            </div>
+                            <div class="day-config">
+                                <div class="time-inputs">
+                                    <div class="form-group">
+                                        <label>Start Time</label>
+                                        <input type="time" id="tuesday-start" value="09:00">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>End Time</label>
+                                        <input type="time" id="tuesday-end" value="18:00">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Slot Duration (mins)</label>
+                                        <select id="tuesday-duration">
+                                            <option value="30">30 minutes</option>
+                                            <option value="60" selected>60 minutes</option>
+                                            <option value="90">90 minutes</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="break-time">
+                                    <h4>Break Time</h4>
+                                    <div class="break-inputs">
+                                        <div class="form-group">
+                                            <label>Break Start</label>
+                                            <input type="time" id="tuesday-break-start" value="13:00">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Break End</label>
+                                            <input type="time" id="tuesday-break-end" value="14:00">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Wednesday -->
+                        <div class="day-schedule">
+                            <div class="day-header">
+                                <h3>Wednesday</h3>
+                                <div class="day-toggle">
+                                    <label class="switch">
+                                        <input type="checkbox" id="wednesday-open" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span>Open</span>
+                                </div>
+                            </div>
+                            <div class="day-config">
+                                <div class="time-inputs">
+                                    <div class="form-group">
+                                        <label>Start Time</label>
+                                        <input type="time" id="wednesday-start" value="09:00">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>End Time</label>
+                                        <input type="time" id="wednesday-end" value="18:00">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Slot Duration (mins)</label>
+                                        <select id="wednesday-duration">
+                                            <option value="30">30 minutes</option>
+                                            <option value="60" selected>60 minutes</option>
+                                            <option value="90">90 minutes</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="break-time">
+                                    <h4>Break Time</h4>
+                                    <div class="break-inputs">
+                                        <div class="form-group">
+                                            <label>Break Start</label>
+                                            <input type="time" id="wednesday-break-start" value="13:00">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Break End</label>
+                                            <input type="time" id="wednesday-break-end" value="14:00">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Thursday -->
+                        <div class="day-schedule">
+                            <div class="day-header">
+                                <h3>Thursday</h3>
+                                <div class="day-toggle">
+                                    <label class="switch">
+                                        <input type="checkbox" id="thursday-open" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span>Open</span>
+                                </div>
+                            </div>
+                            <div class="day-config">
+                                <div class="time-inputs">
+                                    <div class="form-group">
+                                        <label>Start Time</label>
+                                        <input type="time" id="thursday-start" value="09:00">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>End Time</label>
+                                        <input type="time" id="thursday-end" value="18:00">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Slot Duration (mins)</label>
+                                        <select id="thursday-duration">
+                                            <option value="30">30 minutes</option>
+                                            <option value="60" selected>60 minutes</option>
+                                            <option value="90">90 minutes</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="break-time">
+                                    <h4>Break Time</h4>
+                                    <div class="break-inputs">
+                                        <div class="form-group">
+                                            <label>Break Start</label>
+                                            <input type="time" id="thursday-break-start" value="13:00">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Break End</label>
+                                            <input type="time" id="thursday-break-end" value="14:00">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Friday -->
+                        <div class="day-schedule">
+                            <div class="day-header">
+                                <h3>Friday</h3>
+                                <div class="day-toggle">
+                                    <label class="switch">
+                                        <input type="checkbox" id="friday-open" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span>Open</span>
+                                </div>
+                            </div>
+                            <div class="day-config">
+                                <div class="time-inputs">
+                                    <div class="form-group">
+                                        <label>Start Time</label>
+                                        <input type="time" id="friday-start" value="09:00">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>End Time</label>
+                                        <input type="time" id="friday-end" value="18:00">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Slot Duration (mins)</label>
+                                        <select id="friday-duration">
+                                            <option value="30">30 minutes</option>
+                                            <option value="60" selected>60 minutes</option>
+                                            <option value="90">90 minutes</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="break-time">
+                                    <h4>Break Time</h4>
+                                    <div class="break-inputs">
+                                        <div class="form-group">
+                                            <label>Break Start</label>
+                                            <input type="time" id="friday-break-start" value="13:00">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Break End</label>
+                                            <input type="time" id="friday-break-end" value="14:00">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Saturday -->
+                        <div class="day-schedule">
+                            <div class="day-header">
+                                <h3>Saturday</h3>
+                                <div class="day-toggle">
+                                    <label class="switch">
+                                        <input type="checkbox" id="saturday-open">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span>Open</span>
+                                </div>
+                            </div>
+                            <div class="day-config">
+                                <div class="time-inputs">
+                                    <div class="form-group">
+                                        <label>Start Time</label>
+                                        <input type="time" id="saturday-start" value="09:00">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>End Time</label>
+                                        <input type="time" id="saturday-end" value="15:00">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Slot Duration (mins)</label>
+                                        <select id="saturday-duration">
+                                            <option value="30">30 minutes</option>
+                                            <option value="60" selected>60 minutes</option>
+                                            <option value="90">90 minutes</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="break-time">
+                                    <h4>Break Time</h4>
+                                    <div class="break-inputs">
+                                        <div class="form-group">
+                                            <label>Break Start</label>
+                                            <input type="time" id="saturday-break-start" value="12:00">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Break End</label>
+                                            <input type="time" id="saturday-break-end" value="13:00">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sunday -->
+                        <div class="day-schedule">
+                            <div class="day-header">
+                                <h3>Sunday</h3>
+                                <div class="day-toggle">
+                                    <label class="switch">
+                                        <input type="checkbox" id="sunday-open">
+                                        <span class="slider"></span>
+                                    </label>
+                                    <span>Open</span>
+                                </div>
+                            </div>
+                            <div class="day-config">
+                                <div class="time-inputs">
+                                    <div class="form-group">
+                                        <label>Start Time</label>
+                                        <input type="time" id="sunday-start" value="09:00">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>End Time</label>
+                                        <input type="time" id="sunday-end" value="15:00">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Slot Duration (mins)</label>
+                                        <select id="sunday-duration">
+                                            <option value="30">30 minutes</option>
+                                            <option value="60" selected>60 minutes</option>
+                                            <option value="90">90 minutes</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="break-time">
+                                    <h4>Break Time</h4>
+                                    <div class="break-inputs">
+                                        <div class="form-group">
+                                            <label>Break Start</label>
+                                            <input type="time" id="sunday-break-start" value="12:00">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Break End</label>
+                                            <input type="time" id="sunday-break-end" value="13:00">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section id="analytics" class="dashboard-section">
+                <div class="section-header">
+                    <h1>Clinic Analytics</h1>
+                    <p>Track your clinic performance and insights</p>
+                </div>
+
+                <!-- Analytics Overview -->
+                <div class="analytics-overview">
+                    <div class="analytics-card">
+                        <h3>Patient Growth</h3>
+                        <div class="chart-container">
+                            <canvas id="patientGrowthChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="analytics-card">
+                        <h3>Revenue Trends</h3>
+                        <div class="chart-container">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="analytics-card">
+                        <h3>Appointment Statistics</h3>
+                        <div class="stats-list">
+                            <div class="stat-item">
+                                <span class="label">Total Appointments</span>
+                                <span class="value">156</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="label">Completed</span>
+                                <span class="value">142</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="label">Cancelled</span>
+                                <span class="value">14</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="label">No-show</span>
+                                <span class="value">8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Metrics -->
+                <div class="performance-metrics">
+                    <h2>Performance Metrics</h2>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="metric-content">
+                                <h3>5.2 min</h3>
+                                <p>Average Time Saved per Patient</p>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="metric-content">
+                                <h3>45</h3>
+                                <p>Patients Handled This Month</p>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="metric-content">
+                                <h3>4.8/5</h3>
+                                <p>Patient Satisfaction Rating</p>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-icon">
+                                <i class="fas fa-rupee-sign"></i>
+                            </div>
+                            <div class="metric-content">
+                                <h3>₹1,25,000</h3>
+                                <p>Monthly Revenue</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section id="profile" class="dashboard-section">
+                <div class="section-header">
+                    <h1>Doctor Profile</h1>
+                    <p>Manage your professional information and clinic settings</p>
+                </div>
+
+                <!-- Profile Form -->
+                <div class="profile-form">
+                    <div class="form-section">
+                        <h3>Personal Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" value="Sarah">
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" value="Smith">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" value="dr.sarah.smith@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel" value="+91 98765 43210">
+                        </div>
+                        <div class="form-group">
+                            <label>Specialization</label>
+                            <select>
+                                <option value="cardiology">Cardiology</option>
+                                <option value="dermatology">Dermatology</option>
+                                <option value="general">General Medicine</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Clinic Information</h3>
+                        <div class="form-group">
+                            <label>Clinic Name</label>
+                            <input type="text" value="Dr. Sarah Smith's Cardiology Clinic">
+                        </div>
+                        <div class="form-group">
+                            <label>Clinic Address</label>
+                            <textarea rows="3">123 Medical Center, Andheri West, Mumbai - 400058</textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Consultation Fee (₹)</label>
+                                <input type="number" value="500">
+                            </div>
+                            <div class="form-group">
+                                <label>Registration Fee (₹)</label>
+                                <input type="number" value="200">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary">
+                        <i class="fas fa-save"></i>
+                        Save Changes
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal" id="patientModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>Patient Details</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Patient details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="aiReportModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>AI Screening Report</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- AI report will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+
+    <script>
+        // Get the current server port
+        let serverPort = 5000; // Default port
+
+        // Try to get the actual port from the server
+        fetch('/.port')
+            .then(response => response.text())
+            .then(port => {
+                if (port && !isNaN(port)) {
+                    serverPort = parseInt(port);
+                }
+            })
+            .catch(() => {
+                // Use default port if can't fetch
+                console.log('Using default port 5000');
+            });
+
+        // AI Report Functions - Hardcoded PDF Display
+        function viewAIReport(appointmentId) {
+            console.log('🎯 AI Report button clicked for appointment:', appointmentId);
+            console.log('📋 Opening hardcoded patient report...');
+
+            try {
+                // Open the hardcoded demo report in a new window
+                console.log('🔗 Opening URL: /demo-report.html');
+                const reportWindow = window.open('/demo-report.html', '_blank', 'width=900,height=700,scrollbars=yes,resizable=yes,toolbar=yes');
+
+                if (reportWindow) {
+                    console.log('✅ Demo patient report window opened successfully');
+
+                    // Show success message
+                    setTimeout(() => {
+                        showSuccessMessage('Patient report opened successfully! Print dialog will appear automatically.');
+                    }, 500);
+                } else {
+                    console.error('❌ Failed to open report window - popup might be blocked');
+                    showErrorMessage('Failed to open report. Please allow popups for this site.');
+                }
+            } catch (error) {
+                console.error('❌ Error opening report:', error);
+                showErrorMessage('Error opening report: ' + error.message);
+            }
+        }
+
+        // Old function removed - now using direct HTML file approach
+        
+        // Show success message helper
+        function showSuccessMessage(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #28a745;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 5px;
+                z-index: 10001;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Show error message helper
+        function showErrorMessage(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #dc3545;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 5px;
+                z-index: 10001;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            // Remove after 5 seconds
+            setTimeout(() => {
+                notification.remove();
+            }, 5000);
+        }
+
+        function displayAIReport(reportData) {
+            const modalBody = document.querySelector('#aiReportModal .modal-body');
+            const aiReport = reportData.aiReport;
+            const extractedInfo = aiReport.extractedPatientInfo || {};
+
+            modalBody.innerHTML = `
+                <div class="ai-report-content">
+                    <div class="report-header">
+                        <h4>Patient: ${reportData.patientName}</h4>
+                        <p>Generated: ${new Date(aiReport.reportGeneratedAt).toLocaleString()}</p>
+                        <p>Doctor: ${reportData.doctorName}</p>
+                    </div>
+
+                    <div class="report-section">
+                        <h5>Patient Information</h5>
+                        <div class="info-grid">
+                            <div><strong>Age:</strong> ${extractedInfo.age || 'Not specified'}</div>
+                            <div><strong>Chief Complaint:</strong> ${extractedInfo.chief_complaint || 'Not specified'}</div>
+                            <div><strong>Symptoms:</strong> ${extractedInfo.symptoms || 'Not specified'}</div>
+                            <div><strong>Duration:</strong> ${extractedInfo.duration_of_symptoms || 'Not specified'}</div>
+                        </div>
+                    </div>
+
+                    <div class="report-section">
+                        <h5>Medical History</h5>
+                        <p>${extractedInfo.previous_medical_history || 'Not specified'}</p>
+                    </div>
+
+                    <div class="report-section">
+                        <h5>Current Medications</h5>
+                        <p>${extractedInfo.current_medications || 'Not specified'}</p>
+                    </div>
+
+                    <div class="report-section">
+                        <h5>Allergies</h5>
+                        <p>${extractedInfo.allergies || 'Not specified'}</p>
+                    </div>
+
+                    <div class="report-section">
+                        <h5>AI Generated Report</h5>
+                        <div class="summary-text">${aiReport.generatedReport || 'Report not available'}</div>
+                    </div>
+
+                    ${aiReport.conversationTranscript ? `
+                    <div class="report-section">
+                        <h5>Conversation Transcript</h5>
+                        <div class="summary-text">${aiReport.conversationTranscript}</div>
+                    </div>
+                    ` : ''}
+                </div>
+            `;
+
+            document.getElementById('aiReportModal').style.display = 'block';
+        }
+
+        // Check for AI report updates periodically
+        function checkAIReportStatus() {
+            // For demo purposes, check specific appointment IDs
+            const appointmentIds = ['1', '2']; // Add more as needed
+
+            appointmentIds.forEach(appointmentId => {
+                fetch(`/api/webhook/ai-report/${appointmentId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            updateAIReportButton(appointmentId, data.data.aiReport.status);
+                        }
+                    })
+                    .catch(error => console.error('Error checking AI status:', error));
+            });
+        }
+
+        function updateAIReportButton(appointmentId, status) {
+            const statusElement = document.getElementById(`ai-status-${appointmentId}`);
+            const buttonElement = document.getElementById(`ai-btn-${appointmentId}`);
+
+            if (statusElement && buttonElement) {
+                if (status === 'completed') {
+                    statusElement.textContent = 'AI Report Generated';
+                    statusElement.className = 'ai-report-status generated';
+                    buttonElement.disabled = false;
+                    buttonElement.className = 'btn btn-success small';
+                } else if (status === 'in_progress') {
+                    statusElement.textContent = 'AI Report Generating...';
+                    statusElement.className = 'ai-report-status pending';
+                    buttonElement.disabled = true;
+                    buttonElement.className = 'btn btn-secondary small';
+                } else {
+                    statusElement.textContent = 'AI Report Yet to Come';
+                    statusElement.className = 'ai-report-status pending';
+                    buttonElement.disabled = true;
+                    buttonElement.className = 'btn btn-secondary small';
+                }
+            }
+        }
+
+        // Check AI report status every 30 seconds
+        setInterval(checkAIReportStatus, 30000);
+
+        // Initial check
+        checkAIReportStatus();
+    </script>
+</body>
+</html>

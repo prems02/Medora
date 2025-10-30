@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Report - Tejas Adhiya</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: white;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 20px;
+        }
+        
+        .header h1 {
+            font-size: 36px;
+            margin: 0;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+        
+        .patient-info {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 5px solid #3498db;
+        }
+        
+        .info-row {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            min-width: 150px;
+            color: #2c3e50;
+            font-size: 18px;
+        }
+        
+        .info-value {
+            color: #34495e;
+            font-size: 18px;
+        }
+        
+        .questions-section {
+            margin-top: 40px;
+        }
+        
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .question-number {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        .question-answer {
+            color: #34495e;
+            font-size: 16px;
+            margin-left: 20px;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .print-button:hover {
+            background: #219a52;
+        }
+        
+        @media print {
+            .print-button {
+                display: none;
+            }
+            body {
+                margin: 0;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="printReport()">🖨️ Print/Save as PDF</button>
+    
+    <div class="header">
+        <h1>Patient Report</h1>
+    </div>
+    
+    <div class="patient-info">
+        <div class="info-row">
+            <div class="info-label">Patient Name:</div>
+            <div class="info-value">Tejas Adhiya</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Age:</div>
+            <div class="info-value">19</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Gender:</div>
+            <div class="info-value">Male</div>
+        </div>
+    </div>
+    
+    <div class="questions-section">
+        <div class="question">
+            <div class="question-number">1. What symptoms are you experiencing?</div>
+            <div class="question-answer">Fever, mild headache, body weakness</div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">2. When did the symptoms start?</div>
+            <div class="question-answer">2 days ago</div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">3. Do you have cough or cold?</div>
+            <div class="question-answer">Mild cold</div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">4. Have you measured your temperature?</div>
+            <div class="question-answer">Yes, 100°F</div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">5. Do you have difficulty breathing?</div>
+            <div class="question-answer">No</div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">6. Any history of allergies?</div>
+            <div class="question-answer">No</div>
+        </div>
+        
+        <div class="question">
+            <div class="question-number">7. Are you taking any current medications?</div>
+            <div class="question-answer">Paracetamol</div>
+        </div>
+    </div>
+    
+    <script>
+        // Auto-trigger print dialog for PDF generation after page loads
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                console.log('🖨️ Auto-triggering print dialog...');
+                window.print();
+            }, 2000);
+        });
+        
+        // Manual print function
+        function printReport() {
+            window.print();
+        }
+    </script>
+</body>
+</html>

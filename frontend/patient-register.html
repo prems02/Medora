@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration - Cliqpat</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Cliqpat Logo" class="logo-image">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="patient-login.html" class="nav-link">Login</a></li>
+                <li><a href="doctor-register.html" class="nav-link">Doctor Register</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Registration Section -->
+    <section class="auth-section">
+        <div class="auth-container wide">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <div class="auth-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h2>Patient Registration</h2>
+                    <p>Create your account to access healthcare services</p>
+                </div>
+                
+                <form class="auth-form multi-step" id="patientRegisterForm">
+                    <!-- Step 1: Personal Information -->
+                    <div class="form-step active" data-step="1">
+                        <h3>Personal Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <div class="input-group">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <div class="input-group">
+                                <i class="fas fa-phone"></i>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dateOfBirth">Date of Birth *</label>
+                                <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Gender *</label>
+                                <select id="gender" name="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address">Address *</label>
+                            <textarea id="address" name="address" rows="3" required></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City *</label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="state">State *</label>
+                                <input type="text" id="state" name="state" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="pincode">Pincode *</label>
+                            <input type="text" id="pincode" name="pincode" required>
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-secondary" onclick="nextStep(2)">Next</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Medical Information -->
+                    <div class="form-step" data-step="2">
+                        <h3>Medical Information</h3>
+                        
+                        <div class="form-group">
+                            <label for="bloodGroup">Blood Group</label>
+                            <select id="bloodGroup" name="bloodGroup">
+                                <option value="">Select Blood Group</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="emergencyContact">Emergency Contact Name *</label>
+                            <input type="text" id="emergencyContact" name="emergencyContact" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="emergencyPhone">Emergency Contact Phone *</label>
+                            <input type="tel" id="emergencyPhone" name="emergencyPhone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="medicalHistory">Medical History</label>
+                            <textarea id="medicalHistory" name="medicalHistory" rows="4" placeholder="Please describe any previous medical conditions, surgeries, or ongoing treatments..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="allergies">Allergies</label>
+                            <textarea id="allergies" name="allergies" rows="3" placeholder="List any known allergies to medications, food, or other substances..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="currentMedications">Current Medications</label>
+                            <textarea id="currentMedications" name="currentMedications" rows="3" placeholder="List any medications you are currently taking..."></textarea>
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-outline" onclick="prevStep(1)">Previous</button>
+                            <button type="button" class="btn btn-secondary" onclick="nextStep(3)">Next</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Medical Records Upload -->
+                    <div class="form-step" data-step="3">
+                        <h3>Medical Records Upload</h3>
+                        <p class="form-description">Upload your medical reports, prescriptions, and health documents for better care.</p>
+                        
+                        <div class="upload-section">
+                            <div class="upload-area" id="uploadArea">
+                                <div class="upload-icon">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                </div>
+                                <h4>Upload Medical Records</h4>
+                                <p>Drag and drop files here or click to browse</p>
+                                <p class="upload-hint">Supported formats: PDF, JPG, PNG (Max 10MB per file)</p>
+                                <input type="file" id="medicalFiles" name="medicalFiles" multiple accept=".pdf,.jpg,.jpeg,.png" style="display: none;">
+                                <button type="button" class="btn btn-outline" onclick="document.getElementById('medicalFiles').click()">
+                                    Choose Files
+                                </button>
+                            </div>
+                            
+                            <div class="uploaded-files" id="uploadedFiles">
+                                <!-- Uploaded files will appear here -->
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Create Password *</label>
+                            <div class="input-group">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="password" name="password" required>
+                                <button type="button" class="password-toggle">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password *</label>
+                            <div class="input-group">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                                <button type="button" class="password-toggle">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="terms" required>
+                                <span class="checkmark"></span>
+                                I agree to the <a href="#" target="_blank">Terms of Service</a> and <a href="#" target="_blank">Privacy Policy</a>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="consent">
+                                <span class="checkmark"></span>
+                                I consent to receive health-related communications
+                            </label>
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-outline" onclick="prevStep(2)">Previous</button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-user-plus"></i>
+                                Create Account
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="patient-login.html">Login here</a></p>
+                </div>
+            </div>
+            
+            <div class="auth-info">
+                <div class="info-card">
+                    <h3>Benefits of Registration</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Find nearby clinics easily</li>
+                        <li><i class="fas fa-check"></i> Book appointments online</li>
+                        <li><i class="fas fa-check"></i> AI-powered health screening</li>
+                        <li><i class="fas fa-check"></i> Secure medical records storage</li>
+                        <li><i class="fas fa-check"></i> Track your health history</li>
+                        <li><i class="fas fa-check"></i> Receive appointment reminders</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h3>Security & Privacy</h3>
+                    <ul>
+                        <li><i class="fas fa-shield-alt"></i> HIPAA compliant</li>
+                        <li><i class="fas fa-lock"></i> End-to-end encryption</li>
+                        <li><i class="fas fa-user-secret"></i> Your data is private</li>
+                        <li><i class="fas fa-check-circle"></i> Verified doctors only</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+        <div class="progress-step active" data-step="1">
+            <span class="step-number">1</span>
+            <span class="step-label">Personal Info</span>
+        </div>
+        <div class="progress-step" data-step="2">
+            <span class="step-number">2</span>
+            <span class="step-label">Medical Info</span>
+        </div>
+        <div class="progress-step" data-step="3">
+            <span class="step-number">3</span>
+            <span class="step-label">Upload & Complete</span>
+        </div>
+    </div>
+
+    <!-- Loading Modal -->
+    <div class="modal" id="loadingModal">
+        <div class="modal-content">
+            <div class="loading-spinner"></div>
+            <p>Creating your account...</p>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Registration Successful!</h3>
+            <p>Welcome to Cliqpat! Your account has been created successfully.</p>
+            <div class="modal-actions">
+                <button class="btn btn-primary" onclick="window.location.href='patient-dashboard.html'">
+                    Go to Dashboard
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/registration.js"></script>
+</body>
+</html>

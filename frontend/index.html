@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cliqpat - Smart Clinic Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">
+                    <img src="images/logo.png" alt="Cliqpat Logo" class="logo-image">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="patient-login.html" class="nav-link btn-patient">Patient Login</a></li>
+                <li><a href="doctor-login.html" class="nav-link btn-doctor">Doctor Login</a></li>
+                <li><a href="admin-dashboard.html" class="nav-link" style="background: #dc3545; color: white;">Admin</a></li>
+                <li><a href="test-admin.html" class="nav-link" style="background: #ffc107; color: #333;">Test API</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Revolutionizing <span class="highlight">Healthcare</span> with AI
+                </h1>
+                <p class="hero-subtitle">
+                    Streamline your clinic operations with AI-powered patient screening, 
+                    electronic health records, and intelligent appointment management.
+                </p>
+                <div class="hero-buttons">
+                    <a href="patient-register.html" class="btn btn-primary">
+                        <i class="fas fa-user"></i>
+                        Find a Clinic
+                    </a>
+                    <a href="doctor-register.html" class="btn btn-secondary">
+                        <i class="fas fa-stethoscope"></i>
+                        Register Clinic
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-card">
+                    <div class="card-header">
+                        <i class="fas fa-robot"></i>
+                        <span>AI Assistant</span>
+                    </div>
+                    <div class="card-content">
+                        <p>"Hello! I'm here to help with your preliminary health screening."</p>
+                        <div class="typing-indicator">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Cliqpat?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Save Time</h3>
+                    <p>Reduce consultation time by 5-7 minutes per patient with AI-powered preliminary screening.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Assistant</h3>
+                    <p>Intelligent calling agent conducts thorough preliminary health assessments in 2-3 minutes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-medical"></i>
+                    </div>
+                    <h3>EHR System</h3>
+                    <p>Complete electronic health records management for better patient care and history tracking.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search-location"></i>
+                    </div>
+                    <h3>Find Clinics</h3>
+                    <p>Patients can easily discover and book appointments at nearby registered clinics.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Verified Doctors</h3>
+                    <p>All registered doctors and clinics are thoroughly verified for authenticity and qualifications.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Efficient Management</h3>
+                    <p>Streamlined appointment booking, patient management, and clinic operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Patient Registration</h3>
+                        <p>Patients register and upload their medical history and reports</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>AI Screening Call</h3>
+                        <p>AI assistant calls patient for preliminary health assessment</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Report Generation</h3>
+                        <p>Detailed health report generated for the doctor</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Efficient Consultation</h3>
+                        <p>Doctor reviews report and conducts focused consultation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Transforming Healthcare Delivery</h2>
+                    <p>Cliqpat is revolutionizing the way clinics operate by integrating cutting-edge AI technology with traditional healthcare practices. Our platform addresses the critical time constraints faced by doctors while ensuring comprehensive patient care.</p>
+                    <p>With our AI-powered preliminary screening system, doctors can focus on what matters most - providing quality care to their patients, while our platform handles the routine preliminary assessments efficiently.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h3>5-7</h3>
+                        <p>Minutes Saved Per Patient</p>
+                    </div>
+                    <div class="stat">
+                        <h3>50+</h3>
+                        <p>Patients Per Day Capacity</p>
+                    </div>
+                    <div class="stat">
+                        <h3>100%</h3>
+                        <p>Verified Doctors</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@cliqpat.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91 98765 43210</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>Mumbai, Maharashtra, India</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <a href="#home">
+                            <img src="images/logo.png" alt="Cliqpat Logo" class="footer-logo-image">
+                        </a>
+                    </div>
+                    <p>Revolutionizing healthcare with AI-powered clinic management solutions.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="patient-login.html">Patient Portal</a></li>
+                        <li><a href="doctor-login.html">Doctor Portal</a></li>
+                        <li><a href="ehr-system.html">EHR System</a></li>
+                        <li><a href="ai-screening.html">AI Screening</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Cliqpat. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+
